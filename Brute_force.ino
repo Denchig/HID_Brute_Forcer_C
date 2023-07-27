@@ -16,7 +16,7 @@ void loop()
 {
   if ( usb_hid.ready() ){
     usb_hid.keyboardPress(0, 49);
-    usb_hid.keyboardRelease(0);
     delay(1000);
+    usb_hid.keyboardRelease(0);
   }
 }
