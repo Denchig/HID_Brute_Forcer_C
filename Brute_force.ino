@@ -33,36 +33,43 @@ void loop()
             {
               for(dig6=0; dig6<10; dig6++) 
               {
+                if (dig2<2)
+                {
                 digitalWrite(LED_BUILTIN, HIGH);
                 usb_hid.keyboardPress(0, keys[dig1]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, keys[dig2]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, keys[dig3]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, keys[dig4]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, keys[dig5]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, keys[dig6]);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardPress(0, 13);
-                delay(10);
+                delay(20);
                 usb_hid.keyboardRelease(0);
                 digitalWrite(LED_BUILTIN, LOW);
                 delay(12000);
+                }
+                else
+                {
+                  exit(0);
+                }
               }
             }
           }
