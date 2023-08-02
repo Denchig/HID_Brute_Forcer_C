@@ -1,9 +1,6 @@
 #include "Adafruit_TinyUSB.h"
 
-uint8_t const desc_hid_report[] =
-{
-  TUD_HID_REPORT_DESC_KEYBOARD()
-};
+uint8_t const desc_hid_report[] = { TUD_HID_REPORT_DESC_KEYBOARD() };
 
 Adafruit_USBD_HID usb_hid(desc_hid_report, sizeof(desc_hid_report), HID_ITF_PROTOCOL_KEYBOARD, 2, false);
 
@@ -33,41 +30,43 @@ void loop()
             {
               for(dig6=0; dig6<10; dig6++) 
               {
-                if (dig2<2)
+                if (dig2<11)
                 {
-                digitalWrite(LED_BUILTIN, HIGH);
-                usb_hid.keyboardPress(0, keys[dig1]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, keys[dig2]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, keys[dig3]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, keys[dig4]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, keys[dig5]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, keys[dig6]);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                delay(20);
-                usb_hid.keyboardPress(0, 13);
-                delay(20);
-                usb_hid.keyboardRelease(0);
-                digitalWrite(LED_BUILTIN, LOW);
-                delay(12000);
+                  digitalWrite(LED_BUILTIN, HIGH);
+                  usb_hid.keyboardPress(0, keys[dig1]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, keys[dig2]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, keys[dig3]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, keys[dig4]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, keys[dig5]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, keys[dig6]);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(20);
+                  usb_hid.keyboardPress(0, 13);
+                  delay(20);
+                  usb_hid.keyboardRelease(0);
+                  delay(1250);
+                  digitalWrite(LED_BUILTIN, LOW);
+                  delay(10000);
                 }
                 else
                 {
+                  digitalWrite(LED_BUILTIN, HIGH);
                   exit(0);
                 }
               }
