@@ -11,69 +11,43 @@ void setup()
   delay(1000);
 }
 
+int start = 0;
+int finish = 10000;
+char result[6];
+
+void typer(char * number)
+{
+  for(int i=6; i>strlen(number); i--)
+  {
+    digitalWrite(LED_BUILTIN, HIGH);
+    usb_hid.keyboardPress(0,48);
+    delay(10);
+    usb_hid.keyboardRelease(0);
+    delay(10);
+    digitalWrite(LED_BUILTIN, LOW);   
+  }
+  char symbol;
+  for(int j=0; j<=strlen(number); j++)
+  {
+    symbol=number[j];
+    digitalWrite(LED_BUILTIN, HIGH);
+    usb_hid.keyboardPress(0,symbol);
+    delay(10);
+    usb_hid.keyboardRelease(0);
+    delay(10);   
+  }
+  usb_hid.keyboardPress(0, 13);
+  delay(10);
+  usb_hid.keyboardRelease(0);
+  delay(10);
+  digitalWrite(LED_BUILTIN, LOW);
+}
+
 void loop()
 {
-  int dig1, dig2, dig3, dig4, dig5, dig6;
-  int keys[10] = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57  };
-
-  if ( usb_hid.ready() )
+  for(start; start <= finish; start++)
   {
-    for(dig1=0; dig1<10; dig1++)
-    {
-      for(dig2=0; dig2<10; dig2++)
-      {
-        for(dig3=0; dig3<10; dig3++)
-        {
-          for(dig4=0; dig4<10; dig4++)
-          {
-            for(dig5=0; dig5<10; dig5++)
-            {
-              for(dig6=0; dig6<10; dig6++) 
-              {
-                if (dig2<11)
-                {
-                  digitalWrite(LED_BUILTIN, HIGH);
-                  usb_hid.keyboardPress(0, keys[dig1]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, keys[dig2]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, keys[dig3]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, keys[dig4]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, keys[dig5]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, keys[dig6]);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(20);
-                  usb_hid.keyboardPress(0, 13);
-                  delay(20);
-                  usb_hid.keyboardRelease(0);
-                  delay(1250);
-                  digitalWrite(LED_BUILTIN, LOW);
-                  delay(10000);
-                }
-                else
-                {
-                  digitalWrite(LED_BUILTIN, HIGH);
-                  exit(0);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    sprintf(result,"%ld", start);
+    typer(result);
   }
 }
